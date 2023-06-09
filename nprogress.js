@@ -249,11 +249,16 @@
       spinner && removeElement(spinner);
     }
 
+    if(!parent){
+      parent = document.querySelector('body')
+    }
+
     if (parent != document.body) {
       addClass(parent, 'nprogress-custom-parent');
     }
 
-    parent.appendChild(progress);
+    if(!!parent)
+      parent.appendChild(progress);
     return progress;
   };
 
@@ -457,7 +462,8 @@
     if (hasClass(oldList, name)) return;
 
     // Trim the opening space.
-    element.className = newList.substring(1);
+    if(element)
+      element.className = newList.substring(1);
   }
 
   /**
